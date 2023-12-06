@@ -1,16 +1,19 @@
 import mongoose from "mongoose";
 
-let isConnected: boolean = false;
-
 export const connectToDatabase = async () => {
   mongoose.set("strictQuery", true);
 
   if (!process.env.MONGODB_URL) {
-    return console.log("MISSING MONGODB_URL");
+    console.log("MISSING MONGODB_URL");
+    return;
   }
 
+  // Mongoose connection states: 0 = disconnected, 1 = connected, 2 = connecting, 3 = disconnecting
+  const isConnected = mongoose.connection.readyState === 1;
+
   if (isConnected) {
-    return console.log("MongoDB is already connected");
+    console.log("MongoDB is already connected");
+    return;
   }
 
   try {
@@ -18,10 +21,8 @@ export const connectToDatabase = async () => {
       dbName: "devflow",
     });
 
-    isConnected = true;
-
     console.log("MongoDB is connected");
   } catch (error) {
-    console.log("MongoDB connection failed", error);
+    console.error("MongoDB connection failed", error);
   }
 };
