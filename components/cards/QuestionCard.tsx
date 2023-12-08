@@ -56,7 +56,7 @@ const QuestionCard = ({
       </div>
 
       <div className="flex-between mt-6 w-full flex-wrap gap-3">
-        {author ? (
+        {author && (
           <Metric
             imgUrl={author.picture}
             alt="user"
@@ -66,8 +66,6 @@ const QuestionCard = ({
             isAuthor
             textStyles="body-medium text-dark400_light700"
           />
-        ) : (
-          <p>Loading author...</p> // Placeholder for missing author
         )}
 
         <Metric
