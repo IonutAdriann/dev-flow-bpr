@@ -231,7 +231,7 @@ export async function getSavedQuestions(params: GetSavedQuestionsParams) {
       ],
     });
 
-    const isNext = user.saved.length > pageSize;
+    const isNext = user?.saved.length > pageSize;
 
     if (!user) {
       throw new Error("User not found");
