@@ -43,7 +43,7 @@ export default async function Home({ searchParams }: SearchParamsProps) {
 
   return (
     <>
-      <div className="bg-gradient-to-r from-purple-700 via-indigo-600 to-blue-500 p-4 text-white">
+      <div className="from-gray-800 via-gray-900 to-black p-4 text-white">
         <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
           <h1 className="text-4xl font-extrabold">Explore Code Sphere</h1>
           <Link href="/ask-question" className="flex justify-end max-sm:w-full">

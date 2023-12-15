@@ -59,19 +59,17 @@ const GlobalResult = () => {
   };
 
   return (
-    <div className="absolute top-full z-10 mt-3 w-full rounded-xl bg-light-800 py-5 shadow-sm dark:bg-dark-400">
+    <div className="absolute top-full z-10 mt-3 w-full rounded-xl bg-gradient-to-r from-purple-900 via-purple-900 to-blue-800 py-5 text-white shadow-sm">
       <GlobalFilters />
-      <div className="my-5 h-[1px] bg-light-700/50 dark:bg-dark-500/50" />
+      <div className="my-5 h-[1px] bg-white/50" />
 
       <div className="space-y-5">
-        <p className="text-dark400_light900 paragraph-semibold px-5">
-          Top Match
-        </p>
+        <p className="paragraph-semibold px-5 text-light-900">Top Match</p>
 
         {isLoading ? (
           <div className="flex-center flex-col px-5">
-            <ReloadIcon className="my-2 h-10 w-10 animate-spin text-primary-500" />
-            <p className="text-dark200_light800 body-regular">
+            <ReloadIcon className="my-2 h-10 w-10 animate-spin text-white" />
+            <p className="body-regular text-white">
               Browsing the entire database
             </p>
           </div>
@@ -82,7 +80,7 @@ const GlobalResult = () => {
                 <Link
                   href={renderLink(item.type, item.id)}
                   key={item.type + item.id + index}
-                  className="flex w-full cursor-pointer items-start gap-3 px-5 py-2.5 hover:bg-light-700/50 dark:bg-dark-500/50"
+                  className="flex w-full cursor-pointer items-start gap-3 px-5 py-2.5 hover:bg-white/50"
                 >
                   <Image
                     src="/assets/icons/tag.svg"
@@ -93,10 +91,10 @@ const GlobalResult = () => {
                   />
 
                   <div className="flex flex-col">
-                    <p className="body-medium text-dark200_light800 line-clamp-1">
+                    <p className="body-medium line-clamp-1 text-white">
                       {item.title}
                     </p>
-                    <p className="text-light400_light500 small-medium mt-1 font-bold capitalize">
+                    <p className="small-medium mt-1 font-bold capitalize text-white">
                       {item.type}
                     </p>
                   </div>
@@ -104,7 +102,7 @@ const GlobalResult = () => {
               ))
             ) : (
               <div className="flex-center flex-col px-5">
-                <p className="text-dark200_light800 body-regular px-5 py-2.5">
+                <p className="body-regular px-5 py-2.5 text-white">
                   Oops, no results found
                 </p>
               </div>

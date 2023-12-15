@@ -12,7 +12,7 @@ const Page = async () => {
   const mongoUser = await getUserById({ userId });
 
   return (
-    <div className="rounded-md bg-gradient-to-r from-purple-700 via-indigo-600 to-blue-500 p-8 text-white">
+    <div className="rounded-md bg-black bg-gradient-to-r p-8 text-white">
       <h1 className="mb-6 text-4xl font-extrabold">Ask a Question</h1>
 
       <div className="mt-6">
