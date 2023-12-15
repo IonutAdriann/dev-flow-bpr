@@ -35,14 +35,14 @@ const AnswerCard = ({
   return (
     <Link
       href={`/question/${question._id}/#${_id}`}
-      className="card-wrapper rounded-[10px] px-11 py-9"
+      className="card-wrapper rounded-[10px] bg-gradient-to-r from-purple-500 to-indigo-500 px-11 py-9 transition hover:shadow-lg dark:from-gray-800 dark:to-gray-600"
     >
       <div className="flex flex-col-reverse items-start justify-between gap-5 sm:flex-row">
         <div>
-          <span className="subtle-regular text-dark400_light700 line-clamp-1 flex sm:hidden">
+          <span className="subtle-regular line-clamp-1 flex text-light-700 sm:hidden">
             {getTimestamp(createdAt)}
           </span>
-          <h3 className="sm:h3-semibold base-semibold text-dark200_light900 line-clamp-1 flex-1">
+          <h3 className="sm:h3-semibold base-semibold line-clamp-1 flex-1 text-light-900">
             {question.title}
           </h3>
         </div>
@@ -61,7 +61,7 @@ const AnswerCard = ({
           value={author.name}
           title={` • asked ${getTimestamp(createdAt)}`}
           href={`/profile/${author.clerkId}`}
-          textStyles="body-medium text-dark400_light700"
+          textStyles="body-medium text-light-700"
           isAuthor
         />
 
@@ -71,7 +71,7 @@ const AnswerCard = ({
             alt="like icon"
             value={formatAndDivideNumber(upvotes)}
             title=" Votes"
-            textStyles="small-medium text-dark400_light800"
+            textStyles="small-medium text-light-800"
           />
         </div>
       </div>

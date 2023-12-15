@@ -22,15 +22,17 @@ export default async function Home({ searchParams }: SearchParamsProps) {
 
   return (
     <>
-      <h1 className="h1-bold text-dark100_light900">Saved Questions</h1>
+      <h1 className="text-dark100_light900 mb-4 text-3xl font-bold">
+        Saved Questions
+      </h1>
 
-      <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
+      <div className="mt-6 flex justify-between gap-5 sm:flex-col sm:items-center">
         <LocalSearchbar
           route="/"
           iconPosition="left"
           imgSrc="/assets/icons/search.svg"
           placeholder="Search for questions"
-          otherClasses="flex-1"
+          otherClasses="flex-1 h-12 px-4 rounded-full bg-gray-100 focus:outline-none focus:ring focus:border-blue-300 shadow-md transition-all duration-300"
         />
 
         <Filter
@@ -39,7 +41,7 @@ export default async function Home({ searchParams }: SearchParamsProps) {
         />
       </div>
 
-      <div className="mt-10 flex w-full flex-col gap-6">
+      <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {result.questions.length > 0 ? (
           result.questions.map((question: any) => (
             <QuestionCard
@@ -56,15 +58,15 @@ export default async function Home({ searchParams }: SearchParamsProps) {
           ))
         ) : (
           <NoResult
-            title="There’s no question saved to show"
-            description="Be the first to break the silence! 🚀 Ask a Question and kickstart the discussion. our query could be the next big thing others learn from. Get involved! 💡"
+            title="Ooops! There are no saved questions yet that can be displayed."
+            description="Are you ready to be the first one to take initiative? 🚀 Ask a Question and get involved in discussions with many engineers. You can actually change the world or implement new ideas, so don't stay quiet. You can do it! 💡"
             link="/ask-question"
             linkTitle="Ask a Question"
           />
         )}
       </div>
 
-      <div className="mt-10">
+      <div className="mt-6">
         <Pagination
           pageNumber={searchParams?.page ? +searchParams.page : 1}
           isNext={result.isNext}

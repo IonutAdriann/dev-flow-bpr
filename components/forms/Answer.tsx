@@ -97,7 +97,7 @@ const Answer = ({ question, questionId, authorId }: Props) => {
   };
 
   return (
-    <div>
+    <div className="to-primary-700 rounded-md bg-gradient-to-r from-primary-500 p-6 text-white">
       <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-center sm:gap-2">
         <h4 className="paragraph-semibold text-dark400_light800">
           Write your answer here

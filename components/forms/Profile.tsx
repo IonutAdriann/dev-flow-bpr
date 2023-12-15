@@ -1,5 +1,3 @@
-"use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import {
@@ -69,20 +67,20 @@ const Profile = ({ clerkId, user }: Props) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="mt-9 flex w-full flex-col gap-9"
+        className="rounded-md bg-gradient-to-r from-purple-600 via-purple-800 to-blue-800 p-8 text-white"
       >
         <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
             <FormItem className="space-y-3.5">
-              <FormLabel className="paragraph-semibold text-dark400_light800">
-                Name <span className="text-primary-500">*</span>
+              <FormLabel className="text-lg font-semibold">
+                Name <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
                 <Input
                   placeholder="Your name"
-                  className="no-focus paragraph-regular light-border-2 background-light800_dark300 text-dark300_light700 min-h-[56px] border"
+                  className="w-full border-b-2 border-white bg-transparent p-3 text-white focus:border-red-500 focus:outline-none focus:ring"
                   {...field}
                 />
               </FormControl>
@@ -90,18 +88,19 @@ const Profile = ({ clerkId, user }: Props) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
           name="username"
           render={({ field }) => (
             <FormItem className="space-y-3.5">
-              <FormLabel className="paragraph-semibold text-dark400_light800">
-                Username <span className="text-primary-500">*</span>
+              <FormLabel className="text-lg font-semibold">
+                Username <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
                 <Input
                   placeholder="Your username"
-                  className="no-focus paragraph-regular light-border-2 background-light800_dark300 text-dark300_light700 min-h-[56px] border"
+                  className="w-full border-b-2 border-white bg-transparent p-3 text-white focus:border-red-500 focus:outline-none focus:ring"
                   {...field}
                 />
               </FormControl>
@@ -109,19 +108,20 @@ const Profile = ({ clerkId, user }: Props) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
           name="portfolioWebsite"
           render={({ field }) => (
             <FormItem className="space-y-3.5">
-              <FormLabel className="paragraph-semibold text-dark400_light800">
+              <FormLabel className="text-lg font-semibold">
                 Portfolio Link
               </FormLabel>
               <FormControl>
                 <Input
                   type="url"
                   placeholder="Your portfolio URL"
-                  className="no-focus paragraph-regular light-border-2 background-light800_dark300 text-dark300_light700 min-h-[56px] border"
+                  className="w-full border-b-2 border-white bg-transparent p-3 text-white focus:border-red-500 focus:outline-none focus:ring"
                   {...field}
                 />
               </FormControl>
@@ -135,13 +135,11 @@ const Profile = ({ clerkId, user }: Props) => {
           name="location"
           render={({ field }) => (
             <FormItem className="space-y-3.5">
-              <FormLabel className="paragraph-semibold text-dark400_light800">
-                Location
-              </FormLabel>
+              <FormLabel className="text-lg font-semibold">Location</FormLabel>
               <FormControl>
                 <Input
                   placeholder="Where are you from?"
-                  className="no-focus paragraph-regular light-border-2 background-light800_dark300 text-dark300_light700 min-h-[56px] border"
+                  className="w-full border-b-2 border-white bg-transparent p-3 text-white focus:border-red-500 focus:outline-none focus:ring"
                   {...field}
                 />
               </FormControl>
@@ -155,13 +153,13 @@ const Profile = ({ clerkId, user }: Props) => {
           name="bio"
           render={({ field }) => (
             <FormItem className="space-y-3.5">
-              <FormLabel className="paragraph-semibold text-dark400_light800">
-                Bio <span className="text-primary-500">*</span>
+              <FormLabel className="text-lg font-semibold">
+                Bio <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
                 <Textarea
                   placeholder="What's special about you?"
-                  className="no-focus paragraph-regular light-border-2 background-light800_dark300 text-dark300_light700 min-h-[56px] border"
+                  className="w-full border-b-2 border-white bg-transparent p-3 text-white focus:border-red-500 focus:outline-none focus:ring"
                   {...field}
                 />
               </FormControl>
@@ -173,7 +171,7 @@ const Profile = ({ clerkId, user }: Props) => {
         <div className="mt-7 flex justify-end">
           <Button
             type="submit"
-            className="primary-gradient w-fit"
+            className="w-fit rounded-md bg-white p-3 text-purple-600 hover:bg-purple-50"
             disabled={isSubmitting}
           >
             {isSubmitting ? "Saving..." : "Save"}

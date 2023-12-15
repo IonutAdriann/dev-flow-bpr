@@ -12,10 +12,10 @@ const Page = async () => {
   const mongoUser = await getUserById({ userId });
 
   return (
-    <div>
-      <h1 className="h1-bold text-dark100_light900">Ask a question</h1>
+    <div className="rounded-md bg-gradient-to-r from-purple-700 via-indigo-600 to-blue-500 p-8 text-white">
+      <h1 className="mb-6 text-4xl font-extrabold">Ask a Question</h1>
 
-      <div className="mt-9">
+      <div className="mt-6">
         <Question mongoUserId={JSON.stringify(mongoUser?._id)} />
       </div>
     </div>
