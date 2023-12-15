@@ -9,7 +9,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Community | Dev Overflow",
+  title: "Community | Code Sphere",
+  description: "Collections page of Code Sphere",
 };
 
 const Page = async ({ searchParams }: SearchParamsProps) => {

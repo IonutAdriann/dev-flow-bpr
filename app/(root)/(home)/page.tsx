@@ -13,7 +13,13 @@ import Filter from "@/components/shared/Filter";
 import NoResult from "@/components/shared/NoResult";
 import Pagination from "@/components/shared/Pagination";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Home | Code Sphere",
+  description: "Home page of Code Sphere",
+};
 
 export default async function Home({ searchParams }: SearchParamsProps) {
   const { userId } = auth();
@@ -40,6 +46,8 @@ export default async function Home({ searchParams }: SearchParamsProps) {
       page: searchParams.page ? +searchParams.page : 1,
     });
   }
+
+  const pageNumber = searchParams?.page ? +searchParams?.page : 1;
 
   return (
     <>
@@ -100,10 +108,7 @@ export default async function Home({ searchParams }: SearchParamsProps) {
       </div>
 
       <div className="mt-10">
-        <Pagination
-          pageNumber={searchParams?.page ? +searchParams.page : 1}
-          isNext={result.isNext}
-        />
+        <Pagination pageNumber={pageNumber} isNext={result.isNext} />
       </div>
     </>
   );
