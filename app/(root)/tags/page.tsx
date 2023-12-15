@@ -16,9 +16,11 @@ const Page = async ({ searchParams }: SearchParamsProps) => {
 
   return (
     <>
-      <h1 className="h1-bold text-dark100_light900">All Tags</h1>
+      <h1 className="text-dark100_light900 mb-8 text-3xl font-extrabold">
+        All Tags
+      </h1>
 
-      <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
+      <div className="mt-8 flex items-center justify-between">
         <LocalSearchbar
           route="/tags"
           iconPosition="left"
@@ -29,11 +31,11 @@ const Page = async ({ searchParams }: SearchParamsProps) => {
 
         <Filter
           filters={TagFilters}
-          otherClasses="min-h-[56px] sm:min-w-[170px]"
+          otherClasses="min-h-[56px] sm:min-w-[170px] bg-gradient-to-r from-blue-500 to-blue-700 px-6 py-3 rounded-md text-white font-semibold shadow-md"
         />
       </div>
 
-      <section className="mt-12 flex flex-wrap gap-4">
+      <section className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {result.tags.length > 0 ? (
           result.tags.map((tag) => (
             <Link
@@ -41,15 +43,13 @@ const Page = async ({ searchParams }: SearchParamsProps) => {
               key={tag._id}
               className="shadow-light100_darknone"
             >
-              <article className="background-light900_dark200 light-border flex w-full flex-col rounded-2xl border px-8 py-10 sm:w-[260px]">
-                <div className="background-light800_dark400 w-fit rounded-sm px-5 py-1.5">
-                  <p className="paragraph-semibold text-dark300_light900">
-                    {tag.name}
-                  </p>
+              <article className="mb-8 rounded-2xl bg-gradient-to-b from-blue-500 to-blue-700 p-8 text-white">
+                <div className="w-fit rounded-sm bg-gradient-to-r from-blue-700 to-blue-900 px-5 py-1.5">
+                  <p className="text-lg font-semibold text-white">{tag.name}</p>
                 </div>
 
-                <p className="small-medium text-dark400_light500 mt-3.5">
-                  <span className="body-semibold primary-text-gradient mr-2.5">
+                <p className="mt-3.5 text-sm text-white">
+                  <span className="mr-2.5 font-semibold text-yellow-300">
                     {tag.questions.length}+
                   </span>{" "}
                   Questions
@@ -59,8 +59,8 @@ const Page = async ({ searchParams }: SearchParamsProps) => {
           ))
         ) : (
           <NoResult
-            title="No Tags Found"
-            description="It looks like there are no tags found."
+            title="There are no tags yet"
+            description="It seems that there are no tags yet. Be the first one to create a tag!"
             link="/ask-question"
             linkTitle="Ask a question"
           />

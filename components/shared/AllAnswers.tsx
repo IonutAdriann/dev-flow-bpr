@@ -32,38 +32,40 @@ const AllAnswers = async ({
 
   return (
     <div className="mt-11">
-      <div className="flex items-center justify-between">
-        <h3 className="primary-text-gradient">{totalAnswers} Answers</h3>
+      <div className="mb-8 flex items-center justify-between">
+        <h3 className="primary-text-gradient text-3xl font-bold">
+          {totalAnswers} Answers
+        </h3>
 
         <Filter filters={AnswerFilters} />
       </div>
 
       <div>
         {result.answers.map((answer) => (
-          <article key={answer._id} className="light-border border-b py-10">
-            <div className="mb-8 flex flex-col-reverse justify-between gap-5 sm:flex-row sm:items-center sm:gap-2">
+          <article
+            key={answer._id}
+            className="mb-10 overflow-hidden rounded-lg border"
+          >
+            <div className="flex items-center justify-between gap-5 bg-gradient-to-r from-purple-900 via-purple-900 to-blue-800 p-6 text-white">
               <Link
                 href={`/profile/${answer.author.clerkId}`}
-                className="flex flex-1 items-start gap-1 sm:items-center"
+                className="flex items-center gap-2"
               >
                 <Image
                   src={answer.author.picture}
-                  width={18}
-                  height={18}
+                  width={36}
+                  height={36}
                   alt="profile"
-                  className="rounded-full object-cover max-sm:mt-0.5"
+                  className="rounded-full object-cover"
                 />
-                <div className="flex flex-col sm:flex-row sm:items-center">
-                  <p className="body-semibold text-dark300_light700">
-                    {answer.author.name}
-                  </p>
-
-                  <p className="small-regular text-light400_light500 ml-0.5 mt-0.5 line-clamp-1">
+                <div>
+                  <p className="text-lg font-semibold">{answer.author.name}</p>
+                  <p className="text-light400_light500 line-clamp-1 text-sm">
                     answered {getTimestamp(answer.createdAt)}
                   </p>
                 </div>
               </Link>
-              <div className="flex justify-end">
+              <div className="flex items-center gap-2">
                 <Votes
                   type="Answer"
                   itemId={JSON.stringify(answer._id)}
@@ -75,7 +77,9 @@ const AllAnswers = async ({
                 />
               </div>
             </div>
-            <ParseHTML data={answer.content} />
+            <div className="p-6">
+              <ParseHTML data={answer.content} />
+            </div>
           </article>
         ))}
       </div>

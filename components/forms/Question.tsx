@@ -1,9 +1,9 @@
 "use client";
+
 import React, { useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useForm } from "react-hook-form";
 import {
   Form,
   FormControl,
@@ -21,6 +21,7 @@ import Image from "next/image";
 import { createQuestion, editQuestion } from "@/lib/actions/question.action";
 import { useRouter, usePathname } from "next/navigation";
 import { useTheme } from "@/context/ThemeProvider";
+import { useForm } from "react-hook-form";
 
 interface Props {
   type?: string;
@@ -120,19 +121,19 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex w-full flex-col gap-10"
+        className="rounded-md bg-gradient-to-r from-purple-900 via-purple-900 to-blue-800 p-8 text-white"
       >
         <FormField
           control={form.control}
           name="title"
           render={({ field }) => (
             <FormItem className="flex w-full flex-col">
-              <FormLabel className="paragraph-semibold text-dark400_light800">
-                Question Title <span className="text-primary-500">*</span>
+              <FormLabel className="text-lg font-semibold">
+                Question Title <span className="text-white">*</span>
               </FormLabel>
               <FormControl className="mt-3.5">
                 <Input
-                  className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
+                  className="w-full border-b-2 border-white bg-transparent p-3 text-white focus:border-red-500 focus:outline-none focus:ring"
                   {...field}
                 />
               </FormControl>
@@ -149,9 +150,9 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
           name="explanation"
           render={({ field }) => (
             <FormItem className="flex w-full flex-col gap-3">
-              <FormLabel className="paragraph-semibold text-dark400_light800">
+              <FormLabel className="text-lg font-semibold">
                 Detailed explanation of your problem{" "}
-                <span className="text-primary-500">*</span>
+                <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl className="mt-3.5">
                 <Editor
@@ -206,14 +207,14 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
           name="tags"
           render={({ field }) => (
             <FormItem className="flex w-full flex-col">
-              <FormLabel className="paragraph-semibold text-dark400_light800">
-                Tags <span className="text-primary-500">*</span>
+              <FormLabel className="text-lg font-semibold">
+                Tags <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl className="mt-3.5">
                 <>
                   <Input
                     disabled={type === "Edit"}
-                    className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
+                    className="w-full border-b-2 border-white bg-transparent p-3 text-white focus:border-red-500 focus:outline-none focus:ring"
                     placeholder="Add tags..."
                     onKeyDown={(e) => handleInputKeyDown(e, field)}
                   />
@@ -256,7 +257,7 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
         />
         <Button
           type="submit"
-          className="primary-gradient w-fit !text-light-900"
+          className="w-fit rounded-md bg-white p-3 text-purple-600 hover:bg-purple-50"
           disabled={isSubmitting}
         >
           {isSubmitting ? (

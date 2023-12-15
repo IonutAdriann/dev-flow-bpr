@@ -9,7 +9,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Community | Dev Overflow",
+  title: "Community | Code Sphere",
+  description: "Collections page of Code Sphere",
 };
 
 const Page = async ({ searchParams }: SearchParamsProps) => {
@@ -21,31 +22,38 @@ const Page = async ({ searchParams }: SearchParamsProps) => {
 
   return (
     <>
-      <h1 className="h1-bold text-dark100_light900">All Users</h1>
+      <h1 className="text-dark100_light900 mb-6 mt-8 text-4xl font-extrabold">
+        Meet the Sphere Community
+      </h1>
 
-      <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
-        <LocalSearchbar
-          route="/community"
-          iconPosition="left"
-          imgSrc="/assets/icons/search.svg"
-          placeholder="Search for amazing minds"
-          otherClasses="flex-1"
-        />
+      <div className="mt-8 flex justify-between gap-6 max-sm:flex-col sm:items-center">
+        <div className="relative w-full max-w-md">
+          <LocalSearchbar
+            route="/community"
+            iconPosition="left"
+            imgSrc="/assets/icons/search.svg"
+            placeholder="The brightest minds are waiting for you"
+            otherClasses="w-full h-12 px-4 rounded-full bg-gradient-to-r from-purple-500 to-indigo-600 focus:outline-none focus:ring focus:border-blue-300 shadow-md transition-all duration-300 text-white"
+          />
+        </div>
 
         <Filter
           filters={UserFilters}
-          otherClasses="min-h-[56px] sm:min-w-[170px]"
+          otherClasses="min-h-[56px] sm:min-w-[170px] bg-gradient-to-r from-blue-500 to-blue-700 px-6 py-3 rounded-md text-white font-semibold shadow-md"
         />
       </div>
 
-      <section className="mt-12 flex flex-wrap gap-4">
+      <section className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {result.users.length > 0 ? (
           result.users.map((user) => <UserCard key={user._id} user={user} />)
         ) : (
-          <div className="paragraph-regular text-dark200_light800 mx-auto max-w-4xl text-center">
-            <p>No users yet</p>
-            <Link href="/sign-up" className="mt-2 font-bold text-accent-blue">
-              Join to be the first!
+          <div className="text-dark200_light800 mx-auto max-w-4xl text-center">
+            <p className="paragraph-regular">We could not find any users</p>
+            <Link
+              href="/sign-up"
+              className="paragraph-regular text-dark200_light800 mx-auto mt-4 max-w-4xl text-center font-bold text-accent-blue hover:underline"
+            >
+              Are you ready for new adventures? Start here!
             </Link>
           </div>
         )}

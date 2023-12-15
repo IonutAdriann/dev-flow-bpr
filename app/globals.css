@@ -22,19 +22,19 @@ body {
   }
 
   .card-wrapper {
-    @apply bg-light-900 dark:dark-gradient shadow-light-100 dark:shadow-dark-100;
+    @apply bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 dark:from-gray-800 dark:via-gray-700 dark:to-gray-600 shadow-lg;
   }
 
   .btn {
-    @apply bg-light-800 dark:bg-dark-300 !important;
+    @apply bg-gradient-to-r from-pink-500 to-purple-500 dark:from-gray-800 dark:to-gray-600 !important;
   }
 
   .btn-secondary {
-    @apply bg-light-800 dark:bg-dark-400 !important;
+    @apply bg-gradient-to-r from-pink-400 to-purple-400 dark:from-gray-700 dark:to-gray-500 !important;
   }
 
   .btn-tertiary {
-    @apply bg-light-700 dark:bg-dark-300 !important;
+    @apply bg-gradient-to-r from-pink-300 to-purple-300 dark:from-gray-600 dark:to-gray-400 !important;
   }
 
   .markdown {
@@ -54,7 +54,7 @@ body {
   }
 
   .tab {
-    @apply min-h-full dark:bg-dark-400 bg-light-800 text-light-500 dark:data-[state=active]:bg-dark-300 data-[state=active]:bg-primary-100 data-[state=active]:text-primary-500 !important;
+    @apply min-h-full dark:bg-dark-400 bg-gradient-to-r from-pink-500 to-purple-500 text-light-500 dark:data-[state=active]:bg-dark-300 data-[state=active]:bg-primary-100 data-[state=active]:text-primary-500 !important;
   }
 }
 
@@ -108,22 +108,15 @@ body {
 
 .markdown a,
 code {
-  /* These are technically the same, but use both */
   overflow-wrap: break-word;
   word-wrap: break-word;
-
   -ms-word-break: break-all;
-  /* This is the dangerous one in WebKit, as it breaks things wherever */
   word-break: break-all;
-  /* Instead use this non-standard one: */
   word-break: break-word;
-
-  /* Adds a hyphen where the word breaks, if supported (No Blink) */
   -ms-hyphens: auto;
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
-
   padding: 2px;
   color: #ff7000 !important;
 }
@@ -137,7 +130,6 @@ code {
   width: 100%;
   display: block;
   overflow-x: auto;
-
   color: inherit !important;
 }
 /* Markdown End */
@@ -153,13 +145,11 @@ code {
   display: block;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

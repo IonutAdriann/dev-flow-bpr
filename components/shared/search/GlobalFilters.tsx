@@ -1,5 +1,3 @@
-"use client";
-
 import { GlobalSearchFilters } from "@/constants/filters";
 import { formUrlQuery } from "@/lib/utils";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -45,10 +43,10 @@ const GlobalFilters = () => {
           <button
             type="button"
             key={item.value}
-            className={`light-border-2 small-medium :text-light-800 rounded-2xl px-5 py-2 capitalize dark:hover:text-primary-500
+            className={`light-border-2 small-medium rounded-2xl px-5 py-2 capitalize dark:hover:text-primary-500
               ${
                 active === item.value
-                  ? "bg-primary-500 text-light-900"
+                  ? "bg-gradient-to-r from-purple-500 via-purple-400 to-blue-500 text-light-900"
                   : "bg-light-700 text-dark-400 hover:text-primary-500 dark:bg-dark-500"
               }
             `}

@@ -1,23 +1,24 @@
+import React from "react";
+import Link from "next/link";
+import { auth } from "@clerk/nextjs";
+import {
+  getQuestions,
+  getRecommendedQuestions,
+} from "@/lib/actions/question.action";
+import { SearchParamsProps } from "@/types";
+import { HomePageFilters } from "@/constants/filters";
 import QuestionCard from "@/components/cards/QuestionCard";
 import HomeFilters from "@/components/home/HomeFilters";
 import Filter from "@/components/shared/Filter";
 import NoResult from "@/components/shared/NoResult";
 import Pagination from "@/components/shared/Pagination";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
-import { Button } from "@/components/ui/button";
-import { HomePageFilters } from "@/constants/filters";
-import {
-  getQuestions,
-  getRecommendedQuestions,
-} from "@/lib/actions/question.action";
-import { SearchParamsProps } from "@/types";
-import Link from "next/link";
-
 import type { Metadata } from "next";
-import { auth } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "Home | Dev Overflow",
+  title: "Home | Code Sphere",
+  description: "Home page of Code Sphere",
 };
 
 export default async function Home({ searchParams }: SearchParamsProps) {
@@ -46,32 +47,37 @@ export default async function Home({ searchParams }: SearchParamsProps) {
     });
   }
 
+  const pageNumber = searchParams?.page ? +searchParams?.page : 1;
+
   return (
     <>
-      <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
-        <h1 className="h1-bold text-dark100_light900">All Questions</h1>
+      <div className="from-gray-800 via-gray-900 to-black p-4 text-white">
+        <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
+          <h1 className="text-4xl font-extrabold">Explore Code Sphere</h1>
+          <Link href="/ask-question" className="flex justify-end max-sm:w-full">
+            <Button className="min-h-[46px] bg-gradient-to-r from-blue-500 to-blue-700 px-6 py-3">
+              Ask a Question
+            </Button>
+          </Link>
+        </div>
 
-        <Link href="/ask-question" className="flex justify-end max-sm:w-full">
-          <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900">
-            Ask a Question
-          </Button>
-        </Link>
-      </div>
+        <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
+          <div className="relative flex-1">
+            <LocalSearchbar
+              route="/"
+              iconPosition="left"
+              imgSrc="/assets/icons/search.svg"
+              placeholder="Search for questions"
+              otherClasses="w-full h-12 px-4 rounded-full bg-gray-100 focus:outline-none focus:ring focus:border-blue-300 shadow-md transition-all duration-300"
+            />
+          </div>
 
-      <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
-        <LocalSearchbar
-          route="/"
-          iconPosition="left"
-          imgSrc="/assets/icons/search.svg"
-          placeholder="Search for questions"
-          otherClasses="flex-1"
-        />
-
-        <Filter
-          filters={HomePageFilters}
-          otherClasses="min-h-[56px] sm:min-w-[170px]"
-          containerClasses="hidden max-md:flex"
-        />
+          <Filter
+            filters={HomePageFilters}
+            otherClasses="min-h-[56px] sm:min-w-[170px]"
+            containerClasses="hidden max-md:flex"
+          />
+        </div>
       </div>
 
       <HomeFilters />
@@ -93,18 +99,16 @@ export default async function Home({ searchParams }: SearchParamsProps) {
           ))
         ) : (
           <NoResult
-            title="There’s no question to show"
-            description="Be the first to break the silence! 🚀 Ask a Question and kickstart the discussion. our query could be the next big thing others learn from. Get involved! 💡"
+            title="Ooops! There are no questions yet that can be displayed."
+            description="Are you ready to be the first one to take initiative? 🚀 Ask a Question and get involved in discussions with many engineers. You can actually change the world or implement new ideas, so don't stay quiet. You can do it! 💡"
             link="/ask-question"
             linkTitle="Ask a Question"
           />
         )}
       </div>
+
       <div className="mt-10">
-        <Pagination
-          pageNumber={searchParams?.page ? +searchParams.page : 1}
-          isNext={result.isNext}
-        />
+        <Pagination pageNumber={pageNumber} isNext={result.isNext} />
       </div>
     </>
   );

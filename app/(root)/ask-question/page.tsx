@@ -4,6 +4,13 @@ import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import React from "react";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Ask-question | Code Sphere",
+  description: "Ask quesiton page of Code Sphere",
+};
+
 const Page = async () => {
   const { userId } = auth();
 
@@ -12,10 +19,10 @@ const Page = async () => {
   const mongoUser = await getUserById({ userId });
 
   return (
-    <div>
-      <h1 className="h1-bold text-dark100_light900">Ask a question</h1>
+    <div className="rounded-md bg-black bg-gradient-to-r p-8 text-white">
+      <h1 className="mb-6 text-4xl font-extrabold">Ask a Question</h1>
 
-      <div className="mt-9">
+      <div className="mt-6">
         <Question mongoUserId={JSON.stringify(mongoUser?._id)} />
       </div>
     </div>

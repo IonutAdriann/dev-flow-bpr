@@ -40,7 +40,6 @@ const LocalSearchbar = ({
 
         router.push(newUrl, { scroll: false });
       } else {
-        console.log(route, pathname);
         if (pathname === route) {
           const newUrl = removeKeysFromQuery({
             params: searchParams.toString(),
@@ -57,16 +56,18 @@ const LocalSearchbar = ({
 
   return (
     <div
-      className={`background-light800_darkgradient flex min-h-[56px] grow items-center gap-4 rounded-[10px] px-4 ${otherClasses}`}
+      className={`background-gradient relative flex items-center gap-4 overflow-hidden rounded-[10px] ${otherClasses}`}
     >
       {iconPosition === "left" && (
-        <Image
-          src={imgSrc}
-          alt="search icon"
-          width={24}
-          height={24}
-          className="cursor-pointer"
-        />
+        <div className="absolute left-2">
+          <Image
+            src={imgSrc}
+            alt="search icon"
+            width={24}
+            height={24}
+            className="filter-grayscale cursor-pointer hover:filter-none"
+          />
+        </div>
       )}
 
       <Input
@@ -74,17 +75,19 @@ const LocalSearchbar = ({
         placeholder={placeholder}
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="paragraph-regular no-focus placeholder text-dark400_light700 border-none bg-transparent shadow-none outline-none"
+        className="paragraph-regular no-focus placeholder text-dark400_light700 w-full border-none bg-transparent px-8 py-2 shadow-none outline-none"
       />
 
       {iconPosition === "right" && (
-        <Image
-          src={imgSrc}
-          alt="search icon"
-          width={24}
-          height={24}
-          className="cursor-pointer"
-        />
+        <div className="absolute right-2">
+          <Image
+            src={imgSrc}
+            alt="search icon"
+            width={24}
+            height={24}
+            className="filter-grayscale cursor-pointer hover:filter-none"
+          />
+        </div>
       )}
     </div>
   );

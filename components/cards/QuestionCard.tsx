@@ -40,14 +40,14 @@ const QuestionCard = ({
   const showActionButtons = clerkId && clerkId === author.clerkId;
 
   return (
-    <div className="card-wrapper rounded-[10px] p-9 sm:px-11">
+    <div className="card-wrapper rounded-[10px] bg-gradient-to-r from-pink-500 to-purple-500 p-9 transition hover:shadow-lg dark:from-gray-800 dark:to-gray-600 sm:px-11">
       <div className="flex flex-col-reverse items-start justify-between gap-5 sm:flex-row">
         <div>
-          <span className="subtle-regular text-dark400_light700 line-clamp-1 flex sm:hidden">
+          <span className="subtle-regular line-clamp-1 flex text-light-700 sm:hidden">
             {getTimestamp(createdAt)}
           </span>
           <Link href={`/question/${_id}`}>
-            <h3 className="sm:h3-semibold base-semibold text-dark200_light900 line-clamp-1 flex-1">
+            <h3 className="sm:h3-semibold base-semibold line-clamp-1 flex-1 text-light-900">
               {title}
             </h3>
           </Link>
@@ -74,7 +74,7 @@ const QuestionCard = ({
           title={` - asked ${getTimestamp(createdAt)}`}
           href={`/profile/${author._id}`}
           isAuthor
-          textStyles="body-medium text-dark400_light700"
+          textStyles="body-medium text-light-700"
         />
         <div className="flex items-center gap-3 max-sm:flex-wrap max-sm:justify-start">
           <Metric
@@ -82,21 +82,21 @@ const QuestionCard = ({
             alt="Upvotes"
             value={formatAndDivideNumber(upvotes.length)}
             title=" Votes"
-            textStyles="small-medium text-dark400_light800"
+            textStyles="small-medium text-light-800"
           />
           <Metric
             imgUrl="/assets/icons/message.svg"
             alt="message"
             value={formatAndDivideNumber(answers.length)}
             title=" Answers"
-            textStyles="small-medium text-dark400_light800"
+            textStyles="small-medium text-light-800"
           />
           <Metric
             imgUrl="/assets/icons/eye.svg"
             alt="eye"
             value={formatAndDivideNumber(views)}
             title=" Views"
-            textStyles="small-medium text-dark400_light800"
+            textStyles="small-medium text-light-800"
           />
         </div>
       </div>
